@@ -1,0 +1,19 @@
+---
+
+- name: ROUTER_TELNET
+  hosts: 192.168.169.133
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: telnet router
+      telnet:
+        user: admin
+        password: password
+        login_prompt: "Username: "
+        prompts:
+          - '[>|#]'
+        command:
+          - terminal length 0
+          - enable
+          - configure terminal
+          - hostname CUCM_
