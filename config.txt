@@ -1,0 +1,17 @@
+enable
+config t
+hostname CUCM
+enable secret pass
+no logging console
+no ip domain-lookup
+username admin privilege 15 secret pass
+line console 0
+ exec-timeout 0 0
+ no login
+line vty 0 14
+ transport input all
+ login local
+Int vlan 1
+ no shut
+ ip add 10.1.1.1 255.255.255.0
+end
