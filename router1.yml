@@ -8,7 +8,7 @@
     - name: TELNET
       telnet:
         user: admin
-        password: password
+        password: pass
         login_prompt: "Username: "
         prompts:
           - '[>|#]'
