@@ -1,7 +1,7 @@
 ---
 
-- name: WELCOME
-  hosts: 192.168.169.133
+- name: IP PHONE CONFIG
+  hosts: router
   gather_facts: false
   connection: local
   tasks:
