@@ -15,7 +15,6 @@
         command:
           - enable
           - conf t
-          - hostname __AutonoAP
           - Dot11 ssid __-wifiSSID
           - authentication open
           - authentication key-management wpa
