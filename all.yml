@@ -1,0 +1,155 @@
+---
+
+- name: IP PHONE CONFIG
+  hosts: router
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: TELNET
+      telnet:
+        user: admin
+        password: pass
+        login_prompt: "Username: "
+        prompts:
+          - '[>|#]'
+        command:
+          - terminal length 0
+          - enable
+          - configure terminal
+          - no telephony-service
+          - telephony-service
+          - no auto assign
+          - no auto-reg-ephone
+          - max-ephones 12
+          - max-dn 48
+          - ip source-address 10.1.1.1 port 2000
+          - create cnf-files
+          - ephone-dn 1
+          - number __11
+          - ephone-dn 2
+          - number __22
+          - ephone-dn 3
+          - number __33
+          - ephone-dn 4
+          - number __44
+          - ephone-dn 5
+          - number __55
+          - ephone-dn 6
+          - number __66
+          - ephone-dn 7
+          - number __77
+          - ephone-dn 8
+          - number __88
+          - ephone-dn 9
+          - number __68
+          - ephone-dn 10
+          - number __23
+          - Ephone 1
+          - Mac-address ____.____.____
+          - type 8945
+          - button 1:1 2:3 3:2 4:4
+          - restart
+          - Ephone 2
+          - Mac-address ____.____.____
+          - type 8945
+          - button 1:8 2:7 3:3 4:5
+          - restart  
+          - end
+
+
+
+
+#SECOND CONFIG NI IP PHONES EDIT UNDERSCORE TO MONITOR NUMBER
+
+
+- name: IP PHONE CONFIG
+  hosts: router
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: TELNET
+      telnet:
+        user: admin
+        password: pass
+        login_prompt: "Username: "
+        prompts:
+          - '[>|#]'
+        command:
+          - terminal length 0
+          - enable
+          - configure terminal
+          - no telephony-service
+          - telephony-service
+          - no auto assign
+          - no auto-reg-ephone
+          - max-ephones 12
+          - max-dn 48
+          - ip source-address 10.1.1.1 port 2000
+          - create cnf-files
+          - ephone-dn 1
+          - number __11
+          - ephone-dn 2
+          - number __22
+          - ephone-dn 3
+          - number __33
+          - ephone-dn 4
+          - number __44
+          - ephone-dn 5
+          - number __55
+          - ephone-dn 6
+          - number __66
+          - ephone-dn 7
+          - number __77
+          - ephone-dn 8
+          - number __88
+          - ephone-dn 9
+          - number __68
+          - ephone-dn 10
+          - number __23
+          - Ephone 1
+          - Mac-address ____.____.____
+          - type 8945
+          - button 1:1 2:3 3:2 4:4
+          - restart
+          - Ephone 2
+          - Mac-address ____.____.____
+          - type 8945
+          - button 1:8 2:7 3:3 4:5
+          - restart  
+          - end
+
+
+
+
+#AUTO-WIFI EDIT UNDERSCORE TO MONITOR NUMBER
+
+
+---
+
+- name: AUTO-WIFI
+  hosts: wifi
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: TELNET
+      telnet:
+        user: admin
+        password: pass
+        login_prompt: "Username: "
+        prompts:
+          - '[>|#]'
+        command:
+          - enable
+          - conf t
+          - Dot11 ssid __-wifiSSID
+          - authentication open
+          - authentication key-management wpa
+          - wpa-psk ascii C1sc0123
+          - guest-mode
+          - default int Dot11Radio0
+          - int Dot11Radio0
+          - channel 9
+          - no shut
+          - encryption mode ciphers tkip
+          - ssid __-wifiSSID
+          - end
