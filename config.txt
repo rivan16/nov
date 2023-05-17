@@ -21,3 +21,26 @@ Int Vlan 10
 Int Fa 0/1/2
   switchport mode access
   switchport access vlan 10  
+  
+  
+  
+  
+  
+  ##CENTOS 9
+UPDATE YOUR CENTOS AND INSTALL THE PACKAGES THAT YOU NEED:
+
+dnf update -y
+
+dnf install epel-release -y
+
+dnf install python
+
+dnf install ansible -y
+
+dnf install telnet -y
+
+dnf install nano -y
+
+dnf install python3-netaddr -y
+
+ansible-galaxy collection install cisco.ios
