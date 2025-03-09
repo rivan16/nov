@@ -1,0 +1,113 @@
+Install terraform to windows
+https://developer.hashicorp.com/terraform/install#windows
+Download  windows 386 - extract it 
+Go to Drive C: - Program Files - Create "Terraform " Folder - Then copy the exe of windows 386 paste it to the newly created folder to drive c.
+
+Go to " Edit system environments - Advanced - Environment Variables - Under system variables - edit "PATH " then add this - C:\Program Files\Terraform
+
+
+********************************************
+Create Folder first.
+*********************************************
+# main.tf
+resource "github_repository" "git_BA_repo" {
+  name        = "NEW--BAGO"
+  description = "My awesome codebase"
+
+  visibility = "public"
+
+}
+
+********************************************
+
+# provider.tf
+
+terraform {
+  required_providers {
+    github = {
+      source  = "integrations/github"
+      version = "~> 6.0"
+    }
+  }
+}
+
+# Configure the GitHub Provider
+provider "github" {
+  token = "YOUR TOKEN - Github-settings-developersetting-token classic -generate new token 'git_tf'"    
+}
+
+
+********************************************
+
+
+
+terraform init
+terraform plan
+terraform apply
+
+
+*************************************************
+https://go.dev/doc/install
+
+**************************************************
+
+@CISCO
+
+configure terminal
+restconf
+ip http secure-server
+do show running-config | include restconf
+end
+config t
+ip http secure-server
+ip http authentication local
+restconf
+netconf-yang
+end
+
+**************************************************
+
+ #CREATE LOOPBACK 
+
+#main.tf
+# main.tf
+resource "iosxe_interface_loopback" "loopback" {
+  name               = 1
+  description        = "Loopback Interface"
+  shutdown           = false
+  ipv4_address       = "1.1.1.1"
+  ipv4_address_mask  = "255.255.255.255"
+  ipv6_enable        = true
+  ipv6_addresses = [
+    {
+      prefix = "2002:DB8::/32"
+      eui_64 = true
+    }
+  ]
+}
+
+
+****************************************************
+#provider.tf
+
+#provide.tf
+terraform {
+  required_providers {
+    iosxe = {
+      source  = "CiscoDevNet/iosxe"
+      version = "0.5.6"
+    }
+  }
+}
+
+provider "iosxe" {
+  username = "admin"
+  password = "password"
+  url      = "https://192.168.108.136"
+}
+
+**************************************************
+terraform init
+terraform plan
+terraform apply
+
